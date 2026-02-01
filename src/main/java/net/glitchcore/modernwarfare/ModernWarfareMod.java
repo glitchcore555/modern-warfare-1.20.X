@@ -1,6 +1,8 @@
 package net.glitchcore.modernwarfare;
 
 import com.mojang.logging.LogUtils;
+import net.glitchcore.modernwarfare.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -25,9 +27,10 @@ public class ModernWarfareMod
     public ModernWarfareMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        ModItems.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -44,6 +47,8 @@ public class ModernWarfareMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
+        if(event.getTabKey()== CreativeModeTabs.COMBAT)
+            event.accept(ModItems.BULLET);
 
     }
 
