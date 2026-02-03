@@ -1,6 +1,7 @@
 package net.glitchcore.modernwarfare;
 
 import com.mojang.logging.LogUtils;
+import net.glitchcore.modernwarfare.item.ModCreativeModeTabs;
 import net.glitchcore.modernwarfare.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,6 +29,7 @@ public class ModernWarfareMod
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
