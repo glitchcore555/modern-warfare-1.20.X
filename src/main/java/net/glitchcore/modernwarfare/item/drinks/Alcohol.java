@@ -32,7 +32,9 @@ public class Alcohol extends Item {
         }
 
         if (!level.isClientSide) {
-            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION,20*15,10));
+            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION,20*30,10));
+            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,20* 30,10));
+            entity.addEffect(new MobEffectInstance(MobEffects.POISON,20* 30,1));
         }
 
         if (stack.isEmpty()) {
