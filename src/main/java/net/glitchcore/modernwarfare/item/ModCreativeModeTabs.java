@@ -20,6 +20,7 @@ public class ModCreativeModeTabs {
                     {
                         output.accept(ModItems.BULLET.get());
                         output.accept(ModItems.ALCOHOL.get());
+                        output.accept(ModItems.MOLOTOV.get());
                     }).build());
     public static void register(IEventBus eventBus)
     {
