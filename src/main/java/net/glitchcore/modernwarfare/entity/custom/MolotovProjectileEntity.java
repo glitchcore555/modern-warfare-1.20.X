@@ -28,7 +28,7 @@ public class MolotovProjectileEntity extends ThrowableItemProjectile {
     protected void onHitBlock(BlockHitResult pResult) {
         if(!this.level().isClientSide){
             this.level().broadcastEntityEvent(this,((byte)3));
-            x
+
         }
         this.discard();
         super.onHitBlock(pResult);

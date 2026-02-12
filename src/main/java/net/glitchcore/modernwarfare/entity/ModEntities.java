@@ -1,6 +1,7 @@
 package net.glitchcore.modernwarfare.entity;
 
 import net.glitchcore.modernwarfare.ModernWarfareMod;
+import net.glitchcore.modernwarfare.entity.custom.BombEntity;
 import net.glitchcore.modernwarfare.entity.custom.MolotovProjectileEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -21,6 +22,11 @@ public class ModEntities {
                             .updateInterval(20)
                             .setCustomClientFactory((spawnEntity, level) -> new MolotovProjectileEntity(level))
                             .build("molotov_projectile"));
+
+
+    public static final RegistryObject<EntityType<BombEntity>>BOMB=
+            ENTITY_TYPES.register("bomb",()->EntityType.Builder.of(BombEntity::new, MobCategory.CREATURE)
+                    .sized(1f,1f).build("bomb"));
 
     public static void register(IEventBus eventBus){ENTITY_TYPES.register(eventBus);}
 }
