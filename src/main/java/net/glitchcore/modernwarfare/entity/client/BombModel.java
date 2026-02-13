@@ -10,6 +10,7 @@ import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
 public class BombModel<T extends BombEntity> extends HierarchicalModel<T> {
@@ -42,8 +43,17 @@ public class BombModel<T extends BombEntity> extends HierarchicalModel<T> {
 	@Override
 	public void setupAnim(BombEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
-        this.animateWalk(ModAnimationDefinitions.jump,limbSwing,limbSwingAmount,2f,2.5f);
+        this.applyHeadRotation(entity,netHeadYaw,headPitch,ageInTicks);
+        this.animateWalk(ModAnimationDefinitions.BOMB_WALK,limbSwing,limbSwingAmount,2f,2.5f);
+        this.animate(entity.idleAnimationState,ModAnimationDefinitions.BOMB_IDLE,ageInTicks,1f);
 	}
+
+    private void applyHeadRotation(BombEntity pEntity, float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
+        pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30.0F, 30.0F);
+        pHeadPitch = Mth.clamp(pHeadPitch, -25.0F, 45.0F);
+        this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
+        this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
+    }
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

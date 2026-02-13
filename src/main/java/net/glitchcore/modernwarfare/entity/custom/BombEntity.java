@@ -16,8 +16,8 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 public class BombEntity extends Animal {
-    public final AnimationState jumpAnimationState = new AnimationState();
-    private int jumpAnimationTimeout = 0;
+    public final AnimationState idleAnimationState = new AnimationState();
+    private int idleAnimationTimeout = 0;
 
     public BombEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -49,12 +49,12 @@ public class BombEntity extends Animal {
 
 
     private void setupAnimationStates(){
-        if (this.jumpAnimationTimeout<=0) {
-            this.jumpAnimationTimeout = random.nextInt(40)+80;
-            this.jumpAnimationState.start(this.tickCount);
+        if (this.idleAnimationTimeout<=0) {
+            this.idleAnimationTimeout = random.nextInt(40)+80;
+            this.idleAnimationState.start(this.tickCount);
         }
         else {
-            --this.jumpAnimationTimeout;
+            --this.idleAnimationTimeout;
         }
     }
 

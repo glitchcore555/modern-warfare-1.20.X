@@ -2,8 +2,10 @@ package net.glitchcore.modernwarfare;
 
 import com.mojang.logging.LogUtils;
 import net.glitchcore.modernwarfare.entity.ModEntities;
+import net.glitchcore.modernwarfare.entity.client.BombRenderer;
 import net.glitchcore.modernwarfare.item.ModCreativeModeTabs;
 import net.glitchcore.modernwarfare.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -70,6 +72,7 @@ public class ModernWarfareMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            EntityRenderers.register(ModEntities.BOMB.get(), BombRenderer::new);
         }
     }
 }
