@@ -18,7 +18,7 @@ public class ModItems {
             ()-> new Alcohol(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item>MOLOTOV = ITEMS.register("molotov",
             ()-> new MolotovCocktail(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item>BOMB_SPAWN_EGG = ITEMS.register("molotov",
+    public static final RegistryObject<Item>BOMB_SPAWN_EGG = ITEMS.register("bombspawnegg",
             ()-> new MolotovCocktail(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus)
